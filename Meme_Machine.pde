@@ -1,4 +1,8 @@
 import processing.sound.*;
+import processing.video.*;
+
+//BAckground snoop
+Movie snoop;
 
 //Background music
 SoundFile back;
@@ -46,6 +50,10 @@ float brate = 1;
 
 
 void setup() {
+  
+  //Snoop movie
+  snoop = new Movie(this, "snoop.mov");
+  
   //back music
   back = new SoundFile(this, "back.mp3");
 
@@ -88,10 +96,12 @@ void setup() {
   m8 = new SoundFile(this, "m8.mp3");
 
   //Canvas
-  size(800, 800);
+  size(700, 700);
   background(0);
 
 
+//Snoop dance
+snoop.loop();
 
   //Play Backgorund music
   back.play();
@@ -106,6 +116,14 @@ void draw() {
 
   //brate = back.rate(brate);
   //back.rate(brate);
+  
+  image(snoop, 0, 0);
+}
+
+
+  // Called every time a new frame is available to read
+void movieEvent(Movie m) {
+  m.read();
 }
 
 
@@ -113,7 +131,8 @@ void draw() {
 void keyPressed() {
   //Change rate based on rate
   if  (key == ']') {
-    back.rate(brate + 0.2);
+    brate = brate + 0.2;
+    back.rate(brate);
   }
   if (key == '[') {
     back.rate(brate - 0.1);
@@ -130,24 +149,31 @@ void keyPressed() {
   //Play wed sounds
   if (key == 'q') {
     wed0.play();
+    wed0.amp(1.5);
   }
   if (key == 'w') {
     wed1.play();
+    wed1.amp(1.5);
   }
   if (key == 'e') {
     wed2.play();
+    wed2.amp(1.5);
   }
   if (key == 'r') {
     wed3.play();
+    wed3.amp(1.5);
   }
   if (key == 't') {
     wed4.play();
+    wed4.amp(1.5);
   }
   if (key == 'y') {
     wed5.play();
+    wed5.amp(1.5);
   }
   if (key == 'u') {
     wed6.play();
+    wed6.amp(1.5);
   }
 
 
